@@ -9,7 +9,7 @@
     "vue"
   ],
   "eslint.format.enable": true, // 启用eslint格式化
-  "editor.formatOnSave": true, // 在保存的时候格式化
+  "editor.formatOnSave": false, // 在保存的时候格式化
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
