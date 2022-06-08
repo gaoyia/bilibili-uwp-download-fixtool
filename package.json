@@ -1,0 +1,15 @@
+{
+  "name": "bilibili-uwp-download-fixtool",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/*"
+    ]
+  },
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}

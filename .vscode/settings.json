@@ -1,0 +1,24 @@
+{
+  "editor.tabSize": 2, // 将缩进大小改为2空格
+  "files.eol": "\n", // 将换行类型改为\n
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint", // 设置默认格式化工具
+  "eslint.validate": [ // 需要格式化的文件类型
+    "javascript",
+    "typescript",
+    "html",
+    "vue"
+  ],
+  "eslint.format.enable": true, // 启用eslint格式化
+  "editor.formatOnSave": true, // 在保存的时候格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
+}

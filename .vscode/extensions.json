@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "hediet.vscode-drawio",
+    "editorconfig.editorconfig",
+    "Vue.volar"
+  ]
+}
