@@ -6,9 +6,9 @@ const windowLoaded = new Promise(resolve => {
   window.onload = resolve
 })
 
-ipcRenderer.on('main-world-port', async (event) => {
-  await windowLoaded
+ipcRenderer.on('node-port', async (event) => {
+  await windowLoaded()
   // 我们使用 window.postMessage 将端口
   // 发送到主进程
-  window.postMessage('main-world-port', '*', event.ports)
+  window.postMessage('node-port', '*', event.ports)
 })
