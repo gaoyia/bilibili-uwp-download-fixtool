@@ -5,11 +5,15 @@
   "license": "Apache 2.0",
   "private": true,
   "scripts": {
-    "build":"tsc -d",
-    "start":"electron ."
+    "build": "tsc -d",
+    "start": "electron ."
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "electron": "^19.0.3",
+    "eslint": "^8.17.0",
+    "eslint-config-tsboot": "^1.0.2",
     "typescript": "^4.7.3"
   },
   "dependencies": {}
