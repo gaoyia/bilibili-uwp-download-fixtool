@@ -5,7 +5,10 @@ const mainEventMap = new Map()
 let MsgPort: MessagePort; // 绑定的node通信port
 
 window.onmessage = (event) => { // preload 传递的事件
-  onmessageEventMap.get(event.data)(event)
+  const fn = onmessageEventMap.get(event.data)
+  if (fn) {
+    onmessageEventMap.get(event.data)(event)
+  }
 }
 
 function onMsg(tag:string,event:(event:MessageEvent<any>)=>void) {  // 为onmessage添加事件
@@ -20,7 +23,7 @@ onMsg("node-port",(event)=>{
     MsgPort = port
     // 一旦我们有了这个端口，我们就可以直接与主进程通信
     MsgPort.onmessage = (portEvent) => {
-      if (!portEvent.data?.cmd) {
+      if (!(portEvent.data && portEvent.data.cmd)) {
         throw new Error("msg must has property 'cmd'");
       }
       if (typeof portEvent.data.cmd !== 'string' ) {
