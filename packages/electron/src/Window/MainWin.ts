@@ -1,5 +1,6 @@
 import { BrowserWindow, BrowserWindowConstructorOptions, dialog, ipcMain, MessageChannelMain } from "electron";
 import isDev from "../utils/isDev";
+import path from "path";
 
 export default class MainWin extends BrowserWindow {
 
@@ -11,7 +12,7 @@ export default class MainWin extends BrowserWindow {
   private DEV_PATH: string = "http://localhost:3000";
 
   // 定义开发url
-  private PRO_PATH: string = "../index.html";
+  private PRO_PATH: string = path.resolve(__dirname, "../renderer/index.html");
 
   // 加载页面
   loadPage () {
