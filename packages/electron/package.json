@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "tsc -d",
-    "start": "electron ."
+    "start": "tsc -d && electron ."
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.27.1",

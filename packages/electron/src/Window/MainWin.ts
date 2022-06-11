@@ -1,4 +1,4 @@
-import { BrowserWindow, BrowserWindowConstructorOptions, MessageChannelMain } from "electron";
+import { BrowserWindow, BrowserWindowConstructorOptions, dialog, ipcMain, MessageChannelMain } from "electron";
 import isDev from "../utils/isDev";
 
 export default class MainWin extends BrowserWindow {
@@ -19,38 +19,6 @@ export default class MainWin extends BrowserWindow {
       this.loadURL(this.DEV_PATH);
     } else {
       this.loadFile(this.PRO_PATH);
-    }
-  }
-
-  private mainWinPort: Electron.MessagePortMain | undefined;
-  private mainPort: Electron.MessagePortMain | undefined;
-
-  // 建立通信
-  buildBridge () {
-    this.webContents.removeAllListeners("did-finish-load");
-    this.webContents.addListener("did-finish-load", () => {
-      const ports = new MessageChannelMain();
-      this.mainPort = ports.port1;
-      this.mainWinPort = ports.port2;
-      this.sendMsg("connected");
-      // 监听来自网页的消息
-      this.mainPort.on("message", (event: any) => {
-        console.log("from renderer main world:", event.data);
-      });
-      this.mainPort.start();
-      this.webContents.postMessage("node-port", null, [ this.mainWinPort ]);
-    });
-  }
-
-  // node 向主窗口发送消息
-  sendMsg (cmd: string, data?: unknown) {
-    if (this.mainPort) {
-      this.mainPort?.postMessage({
-        cmd,
-        data,
-      });
-    } else {
-      console.error("通信尚未建立");
     }
   }
 }
